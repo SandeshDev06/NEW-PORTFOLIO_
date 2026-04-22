@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sandesh Kurhade | Developer Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- EmailJS CDN ✅ -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a class="nav-logo" href="#home">
+        <span class="logo-bracket">{</span> SK <span class="logo-bracket">}</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a class="nav-pill" href="#home">Home</a>
+        <a class="nav-pill" href="#about">About</a>
+        <a class="nav-pill" href="#skills">Skills</a>
+        <a class="nav-pill" href="#education">Education</a>
+        <a class="nav-pill" href="#projects">Projects</a>
+        <a class="nav-pill" href="#internship">Internship</a>
+        <a class="nav-pill" href="#contact">Contact</a>
+      </div>
+      <div class="nav-right">
+        <button id="themeToggle" class="theme-btn" aria-label="Toggle theme">
+          <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <i class="bi bi-list" id="hamIcon"></i>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-drawer" id="mobileDrawer">
+      <a class="mob-link" href="#home">Home</a>
+      <a class="mob-link" href="#about">About</a>
+      <a class="mob-link" href="#skills">Skills</a>
+      <a class="mob-link" href="#education">Education</a>
+      <a class="mob-link" href="#projects">Projects</a>
+      <a class="mob-link" href="#internship">Internship</a>
+      <a class="mob-link" href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home" class="hero-section">
+    <div class="hero-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-text fade-in-up">
+          <div class="greeting-chip">
+            <span class="chip-dot"></span>
+            <span>Available for opportunities</span>
+          </div>
+
+          <h1 class="hero-name">
+            Sandesh<br/>
+            <span class="name-outline">Kurhade</span>
+          </h1>
+
+          <div class="hero-title-wrap">
+            <span class="accent-slash">// </span>
+            <span id="typedText">Aspiring Full Stack Developer</span><span class="typed-cursor">|</span>
+          </div>
+
+          <p class="hero-desc">
+            Computer Science &amp; Engineering student passionate about building modern web applications, solving algorithmic problems, and turning ideas into reality through clean code.
+          </p>
+
+          <div class="hero-btns">
+            <a href="#contact" class="btn-primary-custom">
+              <i class="bi bi-lightning-charge-fill"></i> Hire Me
+            </a>
+            <!-- ✅ Resume button — opens PDF in new tab -->
+            <a href="newresumesandeshagainupdataed.pdf" id="resumeBtn" download="Sandesh_Kurhade_CV.pdf" class="btn-outline-custom">
+              <i class="bi bi-download"></i> Download CV
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-chip">
+              <span class="stat-num">92.5%</span>
+              <span class="stat-label">Diploma Score</span>
+            </div>
+            <div class="stat-chip">
+              <span class="stat-num">90</span>
+              <span class="stat-label">Days Internship</span>
+            </div>
+            <div class="stat-chip">
+              <span class="stat-num">2+</span>
+              <span class="stat-label">Certifications</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-photo-col fade-in-right">
+          <div class="hero-photo-wrap">
+            <div class="photo-ring-outer"></div>
+            <div class="photo-ring-inner"></div>
+            <img src="profileimage.jpeg" alt="Sandesh Kurhade" class="hero-photo-img" />
+            <div class="photo-badge b-js">JS</div>
+            <div class="photo-badge b-py">PY</div>
+            <div class="photo-badge b-aws"><i class="bi bi-cloud-fill"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>scroll</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section-pad">
+    <div class="container">
+      <div class="section-label">01 / about</div>
+      <h2 class="section-heading reveal">Who I Am</h2>
+
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-4 col-md-5 d-flex justify-content-center reveal">
+          <div class="about-photo-wrap">
+            <img src="profileimage.jpeg" alt="Sandesh Kurhade" class="about-photo-img" />
+            <div class="about-ring"></div>
+            <div class="about-tag"><i class="bi bi-geo-alt-fill"></i> Nipani, KA</div>
+          </div>
+        </div>
+
+        <div class="col-lg-8 col-md-7 reveal">
+          <p class="about-text">
+            I'm a <strong>motivated and detail-oriented</strong> Computer Science &amp; Engineering student with a solid foundation in software development, algorithms, and computer systems.
+          </p>
+          <p class="about-text">
+            I'm actively seeking opportunities to contribute to innovative projects in <strong>software engineering and web development</strong>. With hands-on experience from a 90-day internship at Softmusk Info Pvt Ltd, I've gained real-world exposure to professional development workflows.
+          </p>
+          <div class="row g-3 mt-2">
+            <div class="col-sm-6"><div class="info-item"><i class="bi bi-mortarboard-fill"></i> CSE Student</div></div>
+            <div class="col-sm-6"><div class="info-item"><i class="bi bi-geo-alt-fill"></i> Nipani, 591237</div></div>
+            <div class="col-sm-6"><div class="info-item"><i class="bi bi-code-slash"></i> Full Stack Interest</div></div>
+            <div class="col-sm-6"><div class="info-item"><i class="bi bi-award-fill"></i> AWS Certified</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section-pad section-alt">
+    <div class="container">
+      <div class="section-label">02 / skills</div>
+      <h2 class="section-heading reveal">Tech Stack</h2>
+
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6 reveal">
+          <div class="skill-card">
+            <div class="skill-icon"><i class="bi bi-braces"></i></div>
+            <h4 class="skill-title">Languages</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">C</span>
+            </div>
+            <div class="skill-bar-row"><span>JavaScript</span><span>80%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="--w:80%"></div></div>
+            <div class="skill-bar-row mt-2"><span>Python</span><span>70%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="--w:70%"></div></div>
+            <div class="skill-bar-row mt-2"><span>Java</span><span>70%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="--w:70%"></div></div>
+            <div class="skill-bar-row mt-2"><span>C</span><span>70%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="--w:70%"></div></div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 reveal">
+          <div class="skill-card">
+            <div class="skill-icon"><i class="bi bi-globe2"></i></div>
+            <h4 class="skill-title">Web Development</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">HTML5</span>
+              <span class="skill-tag">CSS3</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">React</span>
+            </div>
+            <div class="skill-bar-row"><span>HTML / CSS</span><span>90%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="--w:85%"></div></div>
+            <div class="skill-bar-row"><span>JavaScript</span><span>65%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="--w:65%"></div></div>
+            <div class="skill-bar-row"><span>React</span><span>65%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="--w:65%"></div></div>
+            <div class="skill-bar-row mt-2"><span>JS Frontend</span><span>75%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="--w:75%"></div></div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 reveal">
+          <div class="skill-card">
+            <div class="skill-icon"><i class="bi bi-database-fill"></i></div>
+            <h4 class="skill-title">Database</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">MySQL</span>
+              <span class="skill-tag">MongoDB</span>
+            </div>
+            <div class="skill-bar-row"><span>MySQL</span><span>72%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="--w:72%"></div></div>
+            <div class="skill-bar-row mt-2"><span>MongoDB</span><span>50%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="--w:50%"></div></div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 reveal">
+          <div class="skill-card">
+            <div class="skill-icon"><i class="bi bi-tools"></i></div>
+            <h4 class="skill-title">Tools</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">VS Code</span>
+              <span class="skill-tag">GitHub</span>
+              <span class="skill-tag">Git</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8 col-md-12 reveal">
+          <div class="skill-card">
+            <div class="skill-icon"><i class="bi bi-lightbulb-fill"></i></div>
+            <h4 class="skill-title">Core Concepts</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Data Structures</span>
+              <span class="skill-tag">Algorithms</span>
+              <span class="skill-tag">OOP</span>
+              <span class="skill-tag">SDLC</span>
+              <span class="skill-tag">Problem Solving</span>
+              <span class="skill-tag">REST APIs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="section-pad">
+    <div class="container">
+      <div class="section-label">03 / education</div>
+      <h2 class="section-heading reveal">Academic Journey</h2>
+
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <span class="tl-badge">2025 – 28</span>
+            <h4 class="tl-title">Pursuing B.Tech in Computer Science &amp; Engineering</h4>
+            <p class="tl-place">Rajarambapu Institute of Technology, Islampur, Sangli</p>
+            <div class="tl-score"><i class="bi bi-trophy-fill"></i> 3rd Sem SGPA 6.3</div>
+          </div>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <span class="tl-badge">2023 – 25</span>
+            <h4 class="tl-title">Diploma in Computer Science &amp; Engineering</h4>
+            <p class="tl-place">B T Patil &amp; Son's Polytechnic Stavanidhi, Nipani</p>
+            <div class="tl-score"><i class="bi bi-trophy-fill"></i> 92.5%</div>
+          </div>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <span class="tl-badge">2020 – 21</span>
+            <h4 class="tl-title">SSLC – 10th Grade</h4>
+            <p class="tl-place">Vidya Mandir, Nipani</p>
+            <div class="tl-score"><i class="bi bi-star-fill"></i> 68.67%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <!-- PROJECTS -->
+<section id="projects" class="section-pad section-alt">
+  <div class="container">
+    <div class="section-label">05 / projects</div>
+    <h2 class="section-heading reveal">Projects</h2>
+
+    <div class="row g-4">
+
+      <!-- Project 1: Multiple DC -->
+      <div class="col-lg-4 col-md-6 reveal">
+        <div class="proj-card">
+          <div class="proj-top">
+            <div class="proj-icon"><i class="bi bi-diagram-3-fill"></i></div>
+            <span class="proj-status live"><i class="bi bi-circle-fill"></i> Live</span>
+          </div>
+          <h4 class="proj-title">Multiple DC</h4>
+          <p class="proj-desc">A multi data-center management interface for handling distributed computing resources and network configurations.</p>
+          <div class="proj-tags">
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">HTML/CSS</span>
+            <span class="skill-tag">MySQL</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2: Survival Game -->
+      <div class="col-lg-4 col-md-6 reveal">
+        <div class="proj-card">
+          <div class="proj-top">
+            <div class="proj-icon"><i class="bi bi-joystick"></i></div>
+            <span class="proj-status live"><i class="bi bi-circle-fill"></i> Live</span>
+          </div>
+          <h4 class="proj-title">Survival Game</h4>
+          <p class="proj-desc">A browser-based survival game with resource management, enemy AI, and progressive difficulty levels built with vanilla JS.</p>
+          <div class="proj-tags">
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">Canvas API</span>
+            <span class="skill-tag">HTML5</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3: Garage Services -->
+      <div class="col-lg-4 col-md-6 reveal">
+        <div class="proj-card">
+          <div class="proj-top">
+            <div class="proj-icon"><i class="bi bi-tools"></i></div>
+            <span class="proj-status live"><i class="bi bi-circle-fill"></i> Live</span>
+          </div>
+          <h4 class="proj-title">Garage Services</h4>
+          <p class="proj-desc">A full-stack web application for managing garage service bookings, vehicle tracking, and customer management system.</p>
+          <div class="proj-tags">
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">REST API</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coming Soon Card -->
+      <div class="col-lg-12 reveal">
+        <div class="proj-card proj-coming">
+          <div class="proj-coming-inner">
+            <div class="proj-coming-icon">
+              <i class="bi bi-hourglass-split"></i>
+            </div>
+            <div>
+              <h4 class="proj-title mb-1">More Projects in Development</h4>
+              <p class="proj-desc mb-0">Currently building exciting new projects — stay tuned. New work coming soon.</p>
+            </div>
+            <div class="proj-dots">
+              <span class="dot-pulse"></span>
+              <span class="dot-pulse" style="animation-delay:0.3s"></span>
+              <span class="dot-pulse" style="animation-delay:0.6s"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+  
+
+  <!-- INTERNSHIP -->
+  <section id="internship" class="section-pad section-alt">
+    <div class="container">
+      <div class="section-label">04 / experience</div>
+      <h2 class="section-heading reveal">Internship</h2>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-8 reveal">
+          <div class="intern-card">
+            <div class="intern-top">
+              <div class="intern-logo">SM</div>
+              <div>
+                <h3 class="intern-company">Softmusk Info Pvt Ltd</h3>
+                <p class="intern-role">Software Development Intern</p>
+              </div>
+              <div class="intern-dur"><i class="bi bi-clock-fill"></i> 90 Days</div>
+            </div>
+            <div class="row g-3 mt-3">
+              <div class="col-sm-6">
+                <div class="intern-detail">
+                  <i class="bi bi-geo-alt-fill"></i>
+                  <div>
+                    <div class="intern-detail-lbl">Location</div>
+                    <div>Near Bus Stand, Jasud Complex, 1st Floor, Nipani – 591237</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="intern-detail">
+                  <i class="bi bi-envelope-fill"></i>
+                  <div>
+                    <div class="intern-detail-lbl">Email</div>
+                    <div>service@softmusk.com</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="intern-tags mt-4">
+              <span class="intern-tag">Web Development</span>
+              <span class="intern-tag">Real-world Projects</span>
+              <span class="intern-tag">Professional Workflow</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications" class="section-pad">
+    <div class="container">
+      <div class="section-label">05 / certifications</div>
+      <h2 class="section-heading reveal">Certifications</h2>
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-5 reveal">
+          <div class="cert-card">
+            <div class="cert-icon"><i class="bi bi-cloud-fill"></i></div>
+            <div class="cert-body">
+              <h4 class="cert-title">Amazon Web Services</h4>
+              <p class="cert-org">AWS Certification</p>
+              <div class="cert-date"><i class="bi bi-calendar3"></i> July 2024</div>
+            </div>
+            <span class="cert-badge">Verified</span>
+          </div>
+        </div>
+        <div class="col-md-5 reveal">
+          <div class="cert-card">
+            <div class="cert-icon"><i class="bi bi-hdd-network-fill"></i></div>
+            <div class="cert-body">
+              <h4 class="cert-title">Cloud Computing</h4>
+              <p class="cert-org">Cloud Fundamentals</p>
+              <div class="cert-date"><i class="bi bi-calendar3"></i> 2024</div>
+            </div>
+            <span class="cert-badge">Verified</span>
+          </div>
+        </div>
+        <div class="col-md-5 reveal">
+          <div class="cert-card">
+            <div class="cert-icon"><i class="bi bi-award-fill"></i></div>
+            <div class="cert-body">
+              <h4 class="cert-title">Best Performance in Internship</h4>
+              <p class="cert-org">Internship Certificate</p>
+              <div class="cert-date"><i class="bi bi-calendar3"></i> July 2025</div>
+            </div>
+            <span class="cert-badge">Verified</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOBBIES -->
+  <section class="section-pad section-alt">
+    <div class="container">
+      <div class="section-label">06 / interests</div>
+      <h2 class="section-heading reveal">Beyond the Code</h2>
+      <div class="row g-4">
+        <div class="col-6 col-md-3 reveal">
+          <div class="hobby-card">
+            <div class="hobby-icon"><i class="bi bi-brush-fill"></i></div>
+            <h5 class="hobby-title">Art</h5>
+            <p class="hobby-sub">Sketching · Painting</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 reveal">
+          <div class="hobby-card">
+            <div class="hobby-icon"><i class="bi bi-trophy-fill"></i></div>
+            <h5 class="hobby-title">Cricket</h5>
+            <p class="hobby-sub">Sports · Team Play</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 reveal">
+          <div class="hobby-card">
+            <div class="hobby-icon"><i class="bi bi-camera-fill"></i></div>
+            <h5 class="hobby-title">Photo Editing</h5>
+            <p class="hobby-sub">Creative · Visual</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 reveal">
+          <div class="hobby-card">
+            <div class="hobby-icon"><i class="bi bi-film"></i></div>
+            <h5 class="hobby-title">Video Editing</h5>
+            <p class="hobby-sub">Motion · Story</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section-pad">
+    <div class="container">
+      <div class="section-label">07 / contact</div>
+      <h2 class="section-heading reveal">Let's Connect</h2>
+      <p class="contact-sub reveal">Have a project or opportunity? Drop me a message.</p>
+
+      <div class="row g-4">
+        <div class="col-lg-4 reveal">
+          <div class="contact-info-block">
+            <div class="ci-item">
+              <div class="ci-icon"><i class="bi bi-geo-alt-fill"></i></div>
+              <div>
+                <div class="ci-label">Location</div>
+                <div class="ci-val">Nipani, Karnataka 591237</div>
+              </div>
+            </div>
+            <div class="ci-item">
+              <div class="ci-icon"><i class="bi bi-envelope-fill"></i></div>
+              <div>
+                <div class="ci-label">Email</div>
+                <!-- ✅ mailto: link — directly opens Gmail compose -->
+                <div class="ci-val">
+                  <a href="mailto:Sandeshkurhade88@gmail.com" class="email-link">
+                    Sandeshkurhade88@gmail.com
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="ci-item">
+              <div class="ci-icon"><i class="bi bi-telephone-fill"></i></div>
+              <div>
+                <div class="ci-label">Phone</div>
+                <div class="ci-val">+91 8904708927</div>
+              </div>
+            </div>
+            <div class="social-links mt-4">
+              <a href="https://github.com/SandeshDev06" target="_blank" class="social-btn"><i class="bi bi-github"></i></a>
+              <a href="https://www.linkedin.com/in/sandesh-kurhade-92634038b/" target="_blank" class="social-btn"><i class="bi bi-linkedin"></i></a>
+              <a href="https://www.instagram.com/sandesh_k_art/?hl=en" target="_blank" class="social-btn"><i class="bi bi-instagram"></i></a>
+              <a href="https://wa.me/918904708927" target="_blank" class="social-btn"><i class="bi bi-whatsapp"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-8 reveal">
+          <div class="contact-form-card">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-lbl">Name</label>
+                <!-- ✅ IDs added for JS to read values -->
+                <input type="text" id="contactName" class="form-inp" placeholder="Your full name" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-lbl">Email</label>
+                <input type="email" id="contactEmail" class="form-inp" placeholder="your@email.com" />
+              </div>
+              <div class="col-12">
+                <label class="form-lbl">Subject</label>
+                <input type="text" id="contactSubject" class="form-inp" placeholder="Project / Opportunity" />
+              </div>
+              <div class="col-12">
+                <label class="form-lbl">Message</label>
+                <textarea id="contactMessage" class="form-inp form-ta" rows="5" placeholder="Tell me about your idea..."></textarea>
+              </div>
+              <div class="col-12">
+                <button class="btn-primary-custom w-100" id="sendBtn" onclick="handleFormSubmit(event)">
+                  <i class="bi bi-send-fill"></i> Send Message
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo"><span class="text-accent">{</span> SK <span class="text-accent">}</span></span>
+        <p class="footer-copy">© 2025 Sandesh Kurhade · Built with <span class="text-accent">♥</span></p>
+        <a href="#home" class="back-top"><i class="bi bi-arrow-up"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast-box"></div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
