@@ -3,15 +3,18 @@
    ================================================ */
 
 /* ================================================
-   EMAILJS CONFIG — Paste your keys here
+   EMAILJS CONFIG — ️ KEEP KEYS EMPTY IN PUBLIC REPO
    ================================================ */
+// Fill these in locally only, do not commit real keys to GitHub
 const EMAILJS_PUBLIC_KEY  = 'o1HSD1xLbEXOYvW65';       // Account → General
 const EMAILJS_SERVICE_ID  = 'service_9et5dxl';       // Email Services
-const EMAILJS_TEMPLATE_ID = 'template_41licam';      // Email Templates
+const EMAILJS_TEMPLATE_ID = 'template_41licam';       // Email Templates
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Init EmailJS
-  emailjs.init(EMAILJS_PUBLIC_KEY);
+  // Init EmailJS only if keys are present
+  if (EMAILJS_PUBLIC_KEY) {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+  }
 
   initTheme();
   initNavbar();
@@ -53,38 +56,59 @@ function initTheme() {
 }
 
 /* ================================================
-   NAVBAR — scroll effect
+   NAVBAR — scroll effect (FIXED)
    ================================================ */
 function initNavbar() {
   const navbar = document.getElementById('navbar');
+  if (!navbar) return; // Safety check
+
   window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 50);
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
   }, { passive: true });
 }
 
 /* ================================================
-   MOBILE MENU
+   MOBILE MENU (FIXED)
    ================================================ */
 function initMobileMenu() {
   const hamburger = document.getElementById('hamburger');
   const drawer    = document.getElementById('mobileDrawer');
   const hamIcon   = document.getElementById('hamIcon');
+  
   if (!hamburger || !drawer) return;
 
   hamburger.addEventListener('click', () => {
-    drawer.classList.contains('open') ? closeMenu() : openMenu();
+    const isOpen = drawer.classList.contains('open');
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
   });
 
-  document.querySelectorAll('.mob-link').forEach(link => link.addEventListener('click', closeMenu));
+  // Close menu when clicking a link
+  document.querySelectorAll('.mob-link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close menu when clicking outside
   document.addEventListener('click', (e) => {
-    if (!hamburger.contains(e.target) && !drawer.contains(e.target)) closeMenu();
+    if (!hamburger.contains(e.target) && !drawer.contains(e.target)) {
+      closeMenu();
+    }
   });
 
   function openMenu() {
     drawer.classList.add('open');
     drawer.style.display = 'flex';
     hamburger.setAttribute('aria-expanded', 'true');
-    hamIcon.className = 'bi bi-x-lg';
+    if(hamIcon) hamIcon.className = 'bi bi-x-lg';
+    
+    // Allow CSS transition to trigger
     requestAnimationFrame(() => {
       drawer.style.opacity = '1';
       drawer.style.transform = 'translateY(0)';
@@ -92,25 +116,42 @@ function initMobileMenu() {
   }
 
   function closeMenu() {
+    if (!drawer.classList.contains('open')) return;
+    
     drawer.classList.remove('open');
+    drawer.style.opacity = '0';
+    drawer.style.transform = 'translateY(-10px)';
     hamburger.setAttribute('aria-expanded', 'false');
-    hamIcon.className = 'bi bi-list';
+    if(hamIcon) hamIcon.className = 'bi bi-list';
+    
+    setTimeout(() => {
+      drawer.style.display = 'none';
+    }, 300); // Match this to CSS transition duration
   }
 }
 
 /* ================================================
-   SMOOTH SCROLL
+   SMOOTH SCROLL (FIXED OFFSET)
    ================================================ */
 function initSmoothScroll() {
-  const NAV_H = 68;
+  // Dynamically get navbar height instead of hardcoding 68
+  const getNavHeight = () => {
+    const nav = document.getElementById('navbar');
+    return nav ? nav.offsetHeight : 80;
+  };
+
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', function (e) {
       const href = this.getAttribute('href');
       if (href === '#') return;
       const target = document.querySelector(href);
       if (!target) return;
+      
       e.preventDefault();
-      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - NAV_H, behavior: 'smooth' });
+      const navHeight = getNavHeight();
+      const targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight;
+      
+      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
     });
   });
 }
@@ -237,7 +278,7 @@ function initCounters() {
 }
 
 /* ================================================
-   RESUME BUTTON — View & Download
+   RESUME BUTTON
    ================================================ */
 function initResumeBtn() {
   const resumeBtn = document.getElementById('resumeBtn');
@@ -245,27 +286,30 @@ function initResumeBtn() {
 
   resumeBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    // Open resume in new tab so user can view + download
     const resumeUrl = 'newresumesandeshagainupdataed.pdf';
     window.open(resumeUrl, '_blank');
   });
 }
 
 /* ================================================
-   CONTACT FORM — EmailJS real email
+   CONTACT FORM
    ================================================ */
 function handleFormSubmit(e) {
   e.preventDefault();
   const btn = document.getElementById('sendBtn');
   if (!btn) return;
 
-  // Get form values
+  // Check if EmailJS is configured
+  if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID) {
+    showToast('⚠ EmailJS not configured locally.');
+    return;
+  }
+
   const name    = document.getElementById('contactName').value.trim();
   const email   = document.getElementById('contactEmail').value.trim();
   const subject = document.getElementById('contactSubject').value.trim();
   const message = document.getElementById('contactMessage').value.trim();
 
-  // Basic validation
   if (!name || !email || !subject || !message) {
     showToast('⚠ Please fill all fields!');
     return;
@@ -277,12 +321,10 @@ function handleFormSubmit(e) {
     return;
   }
 
-  // Show loading state
   const orig = btn.innerHTML;
   btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Sending...';
   btn.disabled = true;
 
-  // Send via EmailJS
   emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
     from_name:  name,
     from_email: email,
@@ -292,14 +334,8 @@ function handleFormSubmit(e) {
   })
   .then(() => {
     btn.innerHTML = '<i class="bi bi-check2-circle"></i> Message Sent!';
-    showToast('✓ Message sent to Sandesh successfully!');
-
-    // Clear form
-    document.getElementById('contactName').value    = '';
-    document.getElementById('contactEmail').value   = '';
-    document.getElementById('contactSubject').value = '';
-    document.getElementById('contactMessage').value = '';
-
+    showToast('✓ Message sent successfully!');
+    document.getElementById('contactForm').reset();
     setTimeout(() => {
       btn.innerHTML = orig;
       btn.disabled  = false;
@@ -308,7 +344,7 @@ function handleFormSubmit(e) {
   .catch((err) => {
     console.error('EmailJS error:', err);
     btn.innerHTML = '<i class="bi bi-exclamation-circle"></i> Failed!';
-    showToast('✗ Failed to send. Please try again!');
+    showToast(' Failed to send. Please try again!');
     setTimeout(() => {
       btn.innerHTML = orig;
       btn.disabled  = false;
